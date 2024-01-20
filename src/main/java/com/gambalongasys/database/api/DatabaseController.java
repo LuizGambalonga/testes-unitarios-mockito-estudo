@@ -2,7 +2,6 @@ package com.gambalongasys.database.api;
 
 import com.gambalongasys.database.model.DatabaseModel;
 import com.gambalongasys.database.service.DatabaseService;
-import org.modelmapper.ModelMapper;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
