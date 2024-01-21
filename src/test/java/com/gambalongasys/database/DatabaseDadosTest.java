@@ -17,4 +17,11 @@ public class DatabaseDadosTest {
     public static DatabaseModel CriarDatabase() {
         return new DatabaseModel(1L, "PAMELA", "099.520.749-64", null);
     }
+    public static DatabaseModel CriarDatabaseComCpfECnpjVazio() {
+        DatabaseModel dtb = new DatabaseModel();
+        dtb.setId(1L);
+        dtb.setNome("PAMELA_TESTE");
+        return dtb;
+    }
+
 }

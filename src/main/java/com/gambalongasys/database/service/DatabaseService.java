@@ -22,7 +22,7 @@ public class DatabaseService {
         return repository.findByIdDatabase(idDatabase);
     }
 
-    public DatabaseModel salvarDatabae(final DatabaseModel databaseModel){
+    public DatabaseModel salvarDatabase(final DatabaseModel databaseModel){
        return repository.save(databaseModel);
     }
 

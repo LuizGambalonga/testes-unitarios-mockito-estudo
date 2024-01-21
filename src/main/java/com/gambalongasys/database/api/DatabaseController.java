@@ -29,8 +29,8 @@ public class DatabaseController {
     }
 
     @PostMapping
-    private ResponseEntity<DatabaseModel> criarDatabase(@RequestBody DatabaseModel databaseModel){
-        DatabaseModel dtb = databaseService.salvarDatabae(databaseModel);
+    public ResponseEntity<DatabaseModel> criarDatabase(@RequestBody DatabaseModel databaseModel){
+        DatabaseModel dtb = databaseService.salvarDatabase(databaseModel);
         return ResponseEntity.status(HttpStatus.CREATED).body(dtb);
     }
 
@@ -41,7 +41,7 @@ public class DatabaseController {
 
         if (dtbExistente !=null){
             BeanUtils.copyProperties(databaseModelNovo, dtbExistente, "id");
-           return ResponseEntity.status(HttpStatus.OK).body(databaseService.salvarDatabae(dtbExistente));
+           return ResponseEntity.status(HttpStatus.OK).body(databaseService.salvarDatabase(dtbExistente));
         }
 
         return ResponseEntity.status(HttpStatus.NOT_FOUND).build();

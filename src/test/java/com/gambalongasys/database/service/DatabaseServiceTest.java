@@ -1,5 +1,6 @@
 package com.gambalongasys.database.service;
 
+import com.gambalongasys.database.DatabaseDadosTest;
 import com.gambalongasys.database.model.DatabaseModel;
 import com.gambalongasys.database.repository.DatabaseRepository;
 import org.junit.jupiter.api.Assertions;
@@ -58,7 +59,7 @@ class DatabaseServiceTest {
 
         when(repositoryMock.save(any(DatabaseModel.class))).thenReturn(dtbparaSalvar);
 
-        DatabaseModel result = databaseService.salvarDatabae(dtbparaSalvar);
+        DatabaseModel result = databaseService.salvarDatabase(dtbparaSalvar);
 
         verify(repositoryMock).save(eq(dtbparaSalvar));
         assertNotNull(result);
