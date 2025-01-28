@@ -35,9 +35,10 @@ public class DatabaseController {
     }
 
     @PutMapping("/{idDatabase}")
-    private  ResponseEntity<DatabaseModel> atualizarUmDatabase(@PathVariable Long idDatabase,
-                                                               @RequestBody DatabaseModel databaseModelNovo){
-        DatabaseModel dtbExistente = databaseService.buscarDatabasePorId(idDatabase);
+    private  ResponseEntity<DatabaseModel> atualizarUmDatabase(@PathVariable final Long idDatabase,
+                                                               @RequestBody final DatabaseModel databaseModelNovo){
+
+        final DatabaseModel dtbExistente = databaseService.buscarDatabasePorId(idDatabase);
 
         if (dtbExistente !=null){
             BeanUtils.copyProperties(databaseModelNovo, dtbExistente, "id");
