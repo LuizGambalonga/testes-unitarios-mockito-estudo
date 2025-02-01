@@ -7,4 +7,6 @@
 
     <include file="create-database.sql" relativeToChangelogFile="true"/>
     <include file="create-usuario.sql" relativeToChangelogFile="true"/>
+
+    <include file="altertable-usuario-001.sql" relativeToChangelogFile="true"/>
 </databaseChangeLog>

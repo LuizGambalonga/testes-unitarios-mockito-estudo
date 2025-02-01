@@ -7,8 +7,13 @@ spring:
   jpa:
     show-sql: true
     properties:
-      hibernate:
-        dialect: org.hibernate.dialect.PostgreSQLDialect
+      hibernate.dialect: org.hibernate.dialect.PostgreSQLDialect
+      hibernate.multiTenancy: SCHEMA
+      hibernate.multi_tenant_connection_provider: com.gambalonga-sys.tenant.ConnectionProvider
+      hibernate.tenant_identifier_resolver:
+      hibernate.session_factory.interceptor:
+      hibernate.filters: "tenantFilter"
+
   liquibase:
     change-log: migrations/master.xml
     enabled: true

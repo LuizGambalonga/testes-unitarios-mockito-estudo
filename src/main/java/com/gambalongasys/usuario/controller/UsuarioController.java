@@ -13,11 +13,9 @@ import org.springframework.web.bind.annotation.*;
 @RequestMapping(path = "/usuarios")
 public class UsuarioController {
 
-    @Autowired
-    private final UsuarioService usuarioService;
 
-    @Autowired
-    private final DatabaseService databaseService;  // Serviço para buscar o tenant
+    private final UsuarioService usuarioService;
+    private final DatabaseService databaseService;
 
     public UsuarioController(final UsuarioService usuarioService, final DatabaseService databaseService) {
         this.usuarioService = usuarioService;
@@ -28,18 +26,17 @@ public class UsuarioController {
     public ResponseEntity<UsuarioModel> criarUsuario(@RequestBody UsuarioModel usuarioModel,
                                                      @RequestHeader("Tenant-ID") Long tenantId) {
 
-        // Verifica se o Tenant existe
+
         DatabaseModel databaseModel = databaseService.buscarDatabasePorId(tenantId);
 
         if (databaseModel == null) {
             return ResponseEntity.status(HttpStatus.NOT_FOUND)
-                    .body(null);  // Retorna 404 caso o tenant não exista
+                    .body(null);
         }
 
-        // Associa o tenant (DatabaseModel) ao novo usuário
-        usuarioModel.setDatabase(databaseModel);  // Associação do tenant
 
-        // Salva o usuário
+        usuarioModel.setDatabase(databaseModel);
+
         UsuarioModel usuarioCriado = usuarioService.salvarUsuario(usuarioModel);
 
         return ResponseEntity.status(HttpStatus.CREATED).body(usuarioCriado);
